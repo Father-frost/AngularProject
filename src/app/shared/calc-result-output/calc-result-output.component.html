@@ -1,0 +1,14 @@
+<div class="form-group">
+    <label for="input">Input</label>
+    <input class="form-control" type="text" id="input" value="{{inputData}}" readonly>
+    <br>
+    <label for="input">Result</label>
+    <input class="form-control" type="text" id="result" value="{{resultData}}" readonly>
+    <br>
+    <div class="wrapper">
+      <app-calc-btn *ngFor="let item of listOfBtns"
+      [BtnsList] = "item"
+      (emitDataToParent)="getChildData($event)"
+      ></app-calc-btn>
+    </div>
+  </div>
