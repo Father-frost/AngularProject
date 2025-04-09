@@ -3,7 +3,8 @@
 
         <mat-form-field>
             <mat-label>Author</mat-label>
-            <mat-select>
+            <mat-select #authorValue  (selectionChange)="filterByAuthor($event.value)">
+                <mat-option [value]="0"><b>All authors</b></mat-option>
                 @for (option of authorOptions; track authorOptions) {
                     <mat-option [value]="option.value">
                         {{ option.displayValue }}
@@ -17,7 +18,8 @@
 
         <mat-form-field>
             <mat-label>Category</mat-label>
-            <mat-select>
+            <mat-select #catValue  (selectionChange)="filterByCategory($event.value)">
+                <mat-option [value]="0"><b>All categories</b></mat-option>
                 @for (option of categoryOptions; track categoryOptions) {
                     <mat-option [value]="option.value">
                         {{ option.displayValue }}

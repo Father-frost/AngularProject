@@ -4,7 +4,6 @@ import { MaterialModule } from '../../../material/material.module';
 import { DataService } from '../../services/data.service';
 import { Author, Category } from '../../../models/models';
 import { UiService } from '../../services/ui.service';
-import { NgIf } from '@angular/common';
 
 export interface AuthorOption {
   displayValue: string;
@@ -18,7 +17,7 @@ export interface CategoryOption {
 
 @Component({
   selector: 'app-page-toolbox',
-  imports: [MaterialModule, NgIf],
+  imports: [MaterialModule],
   templateUrl: './page-toolbox.component.html',
   styleUrl: './page-toolbox.component.css'
 })
@@ -66,5 +65,17 @@ export class PageToolboxComponent implements OnInit {
     searchByTitle(search: string): void {
       this.dataService.searchByTitle(search);
     }
+
+    filterByAuthor(authorId:number): void {
+      console.log(authorId);
+      this.dataService.filterByAuthor(authorId);
+
+    } 
+
+    filterByCategory(catId:number): void {
+      console.log(catId);
+      this.dataService.filterByCategory(catId);
+
+    } 
 
 }

@@ -40,6 +40,28 @@ export class DataService {
     }
   }
 
+  filterByAuthor(authorId: number):void {
+    if (authorId) {
+      const searchResult = this.books.filter(
+        (book) => book.authorId == authorId)
+  
+      this.booksSubject.next(searchResult);
+    } else {
+      this.booksSubject.next(this.books); 
+    }
+  }
+
+  filterByCategory(catId: number):void {
+    if (catId) {
+      const searchResult = this.books.filter(
+        (book) => book.categoryId == catId)
+  
+      this.booksSubject.next(searchResult);
+    } else {
+      this.booksSubject.next(this.books); 
+    }
+  }
+
   getAllFromApi(): void {
     this.getAllBooks()
       .subscribe({        
@@ -132,7 +154,7 @@ export class DataService {
   }
 
   findBookById(id: number): Observable<Book> {
-    return this.http.get<Book>(this.authService.baseUrl + '/find/' + id).pipe(first());
+    return this.http.get<Book>(this.authService.baseUrl + 'books/' + id).pipe(first());
   }
 
   findAuthorById(id: number): Observable<Author> {
@@ -144,7 +166,7 @@ export class DataService {
   }
 
   deleteBook(id: number): Observable<Book> {
-    return this.http.delete<Book>(this.authService.baseUrl + '/' + id).pipe(first());
+    return this.http.delete<Book>(this.authService.baseUrl + 'books/' + id).pipe(first());
   }
 
   postBook(book: Book): Observable<Book> {
