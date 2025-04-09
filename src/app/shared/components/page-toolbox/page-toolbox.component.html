@@ -1,0 +1,38 @@
+<mat-toolbar>
+    <div class="select">
+
+        <mat-form-field>
+            <mat-label>Author</mat-label>
+            <mat-select>
+                @for (option of authorOptions; track authorOptions) {
+                    <mat-option [value]="option.value">
+                        {{ option.displayValue }}
+                    </mat-option>
+                }
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <span class="spacer"></span>
+    <div class="select">
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select>
+                @for (option of categoryOptions; track categoryOptions) {
+                    <mat-option [value]="option.value">
+                        {{ option.displayValue }}
+                    </mat-option>
+                }
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <span class="spacer"></span>
+    <div class="toggle">
+        <p><mat-slide-toggle>Show only favorites</mat-slide-toggle></p>
+    </div>
+    <span class="spacer"></span>
+    <mat-form-field>
+        <input matInput #search (keyup)="searchByTitle(search.value)" type="search" placeholder="Search by title" aria-label="Search">
+        
+      </mat-form-field>
+</mat-toolbar>

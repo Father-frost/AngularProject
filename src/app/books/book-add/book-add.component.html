@@ -1,0 +1,66 @@
+<div class="register-form">
+<mat-card>
+    <mat-card-header>
+        <h1>Add Book</h1>
+    </mat-card-header>
+
+    <mat-card-content [formGroup]="newBook">
+        <mat-grid-list cols="2" rowHeight="100px" gutterSize="10px">            
+            <mat-grid-tile colspan="2">
+                <mat-form-field color="accent" class="book-title">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="title">
+                    <mat-error>Field is required!</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+            <mat-form-field color="accent" class="book-author">
+                <mat-label>Author</mat-label>
+                <input matInput formControlName="author">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile>    
+                <mat-form-field color="accent" class="book-year">
+                    <mat-label>Publication Year</mat-label>
+                    <input matInput formControlName="year">
+                    <mat-error>Field is required!</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            
+            
+            <mat-grid-tile colspan="2">  
+                <mat-form-field color="accent" class="category-select">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category" #categorySelect>
+                        @for (option of categoryOptions; track categoryOptions) {
+                            <mat-option [value]="option.value">
+                                {{ option.displayValue }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                    <mat-error>Field is required!</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile colspan="2">
+                <mat-form-field color="accent" class="description">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+    
+<mat-card-actions>
+        <button mat-stroked-button color="accent"
+        [disabled]="newBook.invalid || categorySelect.empty"
+        (click)="addBook()">
+        <span>Add</span>
+    </button>
+</mat-card-actions>
+
+</mat-card>
+</div>

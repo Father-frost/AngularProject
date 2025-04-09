@@ -1,0 +1,23 @@
+<app-page-toolbox></app-page-toolbox>
+  <div class="book-list">
+    <!-- book cards -->
+    <app-book-card 
+    *ngFor="let book of books" 
+    [book]="book"
+    ></app-book-card>
+    
+  </div>   
+  <!-- if no books -->
+      <app-empty-bookshelf *ngIf="books.length === 0"></app-empty-bookshelf>
+  
+  <!-- delete Modal -->
+  <ng-template #deleteModal>
+    <h2 mat-dialog-title>Delete book</h2>
+<mat-dialog-content>
+  Would you like to delete book: {{ bookToDelete.title }} ?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="confirmDelete()">Ok</button>
+  <button mat-button mat-dialog-close (click)="declineDelete()">No</button>
+</mat-dialog-actions>
+  </ng-template>

@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <span>Book Heven</span>
+    <div class="user-info">
+    @if (loggedIn) {
+        <button mat-raised-button color="accent" routerLink="/book-list">Homepage</button>
+        <button mat-raised-button color="accent" routerLink="/categories">Categories</button>
+        <button mat-flat-button routerLink="/book-add">Add New</button>
+    }
+    </div>
+    <span class="spacer"></span>
+    <div class="user-info">
+        @if (loggedIn) {
+        <button mat-raised-button color="accent" routerLink="/profile">{{name}}</button>
+        <button mat-stroked-button (click)="logout()">Log Out</button>
+        }
+    </div>
+</mat-toolbar>
