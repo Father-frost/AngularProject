@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaterialModule } from '../../../material/material.module';
 import { Book } from '../../../models/models';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-book-card',
-  imports: [ MaterialModule],
+  imports: [ MaterialModule, RouterLink],
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.scss'
 })

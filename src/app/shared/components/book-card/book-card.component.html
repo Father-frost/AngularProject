@@ -1,15 +1,15 @@
 <mat-card appearance="outlined">
     <mat-card-header>
       <mat-card-title-group>
-        <mat-card-title>{{book.title}}</mat-card-title>
-        <mat-card-subtitle>{{book.author.name}}</mat-card-subtitle>
+        <mat-card-title>{{book.title}} ({{book.pubYear}})</mat-card-title>
+        <mat-card-subtitle>{{book.author?.name}}</mat-card-subtitle>
         <img mat-card-md-image [src]="book.imgPath" [alt]="book.title">
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <p>{{book.category.name}}</p>
+      <p>{{book.category?.name}}</p>
       <div class="desc">{{book.description}}</div>
-      <button mat-raised-button color="accent" routerLink="['/update/' + book.id]">Edit</button>
+      <button mat-raised-button color="accent" [routerLink]="['/update/', book.id]">Edit</button>
       <button mat-raised-button color="accent" (click)="onDelete(book)">Delete</button>
       <span class="spacer"></span>
       <button mat-fab disabled aria-label="">

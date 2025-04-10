@@ -7,6 +7,7 @@ import { ProfileComponent } from './shared/users/profile/profile.component';
 import { SignedGuard } from './shared/guards/signed.guard';
 import { RegisterComponent } from './auth/register/register.component';
 import { BookAddComponent } from './books/book-add/book-add.component';
+import { BookEditComponent } from './books/book-edit/book-edit.component';
 
 export const routes: Routes = [
   { path: '', component: BookListComponent, canActivate: [AuthGuard] },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'book-list', component: BookListComponent ,canActivate: [AuthGuard]},
   { path: 'book-add', component: BookAddComponent ,canActivate: [AuthGuard]},
+  { path: 'update/:id', component: BookEditComponent,canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];

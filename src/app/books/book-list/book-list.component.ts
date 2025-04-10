@@ -60,11 +60,9 @@ export class BookListComponent implements OnInit {
     confirmDelete(): void {
       this.dataService.deleteFromApi(this.bookToDelete);
   
-      //this.modalRef?.hide();
     }
    
     declineDelete(): void {
-      //this.modalRef?.hide();
     }
 }
 

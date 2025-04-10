@@ -19,13 +19,13 @@ export interface Book {
   id: number;
   title: string;
   authorId: number;
-  author: Author;
-  year: number;
+  author?: Author;
+  pubYear: string;
   img?: File;
   imgPath?: string; 
   description?: string;
   categoryId: number;
-  category: Category;
+  category?: Category;
 }
 
 export interface BooksByCategory {

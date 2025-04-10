@@ -1,0 +1,80 @@
+<div class="register-form">
+    <mat-card>
+        <mat-card-header>
+            <h1>Edit Book</h1>
+        </mat-card-header>
+    
+        <mat-card-content [formGroup]="editedBook">
+            <mat-grid-list cols="2" rowHeight="100px" gutterSize="10px">            
+                <mat-grid-tile colspan="2">
+                    <mat-form-field color="accent" class="book-title">
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" value={{book.title}}>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+    
+                <mat-grid-tile>  
+                    <mat-form-field color="accent" class="author-select">
+                        <mat-label>Author</mat-label>
+                        <mat-select formControlName="author" #authorSelect [(value)]="book.authorId">
+                            @for (option of authorOptions; track authorOptions) {
+                                <mat-option [value]="option.value">
+                                    {{ option.displayValue }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+    
+                <mat-grid-tile>  
+                    <mat-form-field color="accent" class="category-select">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category" #categorySelect [(value)]="book.categoryId">
+                            @for (option of categoryOptions; track categoryOptions) {
+                                <mat-option [value]="option.value">
+                                    {{ option.displayValue }}
+                                    
+                                </mat-option>
+                            }
+                        </mat-select>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                
+                <mat-grid-tile>    
+                    <mat-form-field color="accent" class="book-year">
+                        <mat-label>Publication Year</mat-label>
+                        <input matInput formControlName="pubYear" value={{book.pubYear}}>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+    
+                <mat-grid-tile>    
+                    <mat-form-field color="accent" class="imgPath">
+                        <mat-label>Image Path</mat-label>
+                        <input matInput formControlName="imgPath" value={{book.imgPath}}>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                
+                <mat-grid-tile colspan="2">
+                    <mat-form-field color="accent" class="description">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description" value="{{book.description}}"></textarea>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+        
+    <mat-card-actions>
+            <button mat-stroked-button color="accent"
+            [disabled]="editedBook.invalid || categorySelect.empty"
+            (click)="editBook()">
+            <span>Apply</span>
+        </button>
+    </mat-card-actions>
+    
+    </mat-card>
+    </div>

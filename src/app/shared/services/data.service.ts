@@ -176,7 +176,7 @@ export class DataService {
 
   updateBook(book: Book): Observable<Book> {
     const formData = this.formDataFromBook(book);
-    return this.http.put<Book>(this.authService.baseUrl, formData).pipe(first());
+    return this.http.put<Book>(this.authService.baseUrl + 'books/' + book.id, formData).pipe(first());
   }
 
 
@@ -193,14 +193,11 @@ export class DataService {
     if(book.description)
       formData.append("description", book.description);
 
-    //if(book.category)
-    //  formData.append("category", book.category.name);
+    if(book.categoryId)
+      formData.append("categoryId", book.categoryId.toString());
 
-    if(book.author)
-      formData.append("author", book.author.name);
-
-    if(book.img)
-      formData.append("img", book.img, book.img.name);
+    if(book.authorId)
+      formData.append("authorId", book.authorId.toString());
 
     if(book.imgPath)
       formData.append("imgPath", book.imgPath);
@@ -208,22 +205,6 @@ export class DataService {
     return formData;
   }
 
-  returnBook(userId: string, bookId: string, fine: number) {
-    return this.http.get(this.authService.baseUrl + 'ReturnBook', {
-      params: new HttpParams()
-        .append('userId', userId)
-        .append('bookId', bookId)
-        .append('fine', fine),
-      responseType: 'text',
-    });
-  }
-
-  approveRequest(userId: number) {
-    return this.http.get(this.authService.baseUrl + 'ApproveRequest', {
-      params: new HttpParams().append('userId', userId),
-      responseType: 'text',
-    });
-  }
 
   getFavs() {
     return this.http.get<any>(this.authService.baseUrl + 'GetFavs').pipe(
