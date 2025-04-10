@@ -29,6 +29,7 @@ export class BookListComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   books: Book[] = [];
   bookToDelete!: Book;
+  dialogRef: any;
   
 
   constructor(    
@@ -43,9 +44,6 @@ export class BookListComponent implements OnInit {
     .subscribe(data => { this.books = data });
 
 
-  console.log(this.books);
-
-
   }
 
   ngOnDestroy(): void {
@@ -55,6 +53,7 @@ export class BookListComponent implements OnInit {
     // delete modal functions
     deleteBook(book: Book, modalTemplate: TemplateRef<any>): void {
       this.bookToDelete = book;
+      this.dialogRef = this.dialog.open(modalTemplate);
 
     }
   

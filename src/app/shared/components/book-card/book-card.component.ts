@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaterialModule } from '../../../material/material.module';
-import { Book, Category } from '../../../models/models';
+import { Book } from '../../../models/models';
 
 
 @Component({
@@ -9,17 +9,18 @@ import { Book, Category } from '../../../models/models';
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.scss'
 })
-export class BookCardComponent  {
+export class BookCardComponent implements OnInit {
   @Input() book!: Book;
   @Output() deleteEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.book);
+    //console.log(this.book);
   }
 
   onDelete(book: Book): void {
+    console.log(this.book);
     this.deleteEvent.emit(book);
   } 
 }

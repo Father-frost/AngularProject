@@ -4,6 +4,7 @@
     <app-book-card 
     *ngFor="let book of books" 
     [book]="book"
+    (deleteEvent)="deleteBook($event, deleteModal)"
     ></app-book-card>
     
   </div>   
